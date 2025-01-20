@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Lexend, } from "next/font/google";
 import "./globals.css";
+import Navigation from "@/components/Navigation";
+import { NextuiProviders } from "@/provider/NextUIProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const lexendSans = Lexend({
+  variable: "--font-lexend",
+  subsets: ["vietnamese"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -24,10 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${lexendSans.className} font-sans antialiased relative`}>
+        <NextuiProviders>
+          <main className="h-screen">
+            {children}
+          </main>
+        </NextuiProviders>
       </body>
     </html>
   );
